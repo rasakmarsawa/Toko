@@ -3,11 +3,13 @@ require 'controller/sessionController.php';
 require './model/barang.php';
 require './model/category.php';
 require './model/item.php';
+require './model/supplier.php';
 
 // $session = new session();
 $barang = new Barang();
 $category = new category();
 $item = new item();
+$supplier = new supplier();
 
 //get file name
 if (empty($_SERVER['QUERY_STRING'])) {
@@ -105,6 +107,41 @@ switch ($filename) {
     if (isset($_POST['submit'])) {
       $item->updateItem($_POST,$_GET['cat_id'],$_GET['id']);
       header('Location:item_detail.php?cat_id='.$_GET['cat_id'].'&&id='.$_GET['id']);
+    }
+    break;
+
+  case 'supplier':
+    $data = $supplier->getSupplier();
+    break;
+
+  case 'supplier_new':
+    if (isset($_POST['submit'])) {
+      $supplier->addSupplier($_POST);
+      header('Location:supplier.php');
+    }
+    break;
+
+  case 'supplier_detail':
+    $data = $supplier->getSupplierById($_GET['id']);
+    if ($data==NULL) {
+      header('Location:supplier.php');
+    }
+
+      if (isset($_GET['delete'])) {
+      $supplier->deleteSupplierById($_GET['id']);
+      header('Location:supplier.php');
+    }
+    break;
+
+  case 'supplier_update':
+    $data = $supplier->getSupplierById($_GET['id']);
+    if ($data==NULL) {
+      header('Location:supplier.php');
+    }
+
+    if (isset($_POST['submit'])) {
+      $supplier->updateSupplier($_POST,$_GET['id']);
+      header('Location:supplier_detail.php?id='.$_GET['id']);
     }
     break;
 
