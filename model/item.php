@@ -42,10 +42,10 @@ class item
   function getItemById($category_id,$item_id){
     $sql = "select
       item.*,
-      category.category_name
+      unit.unit_name
     from item
-    inner join category on
-      item.category_id = category.category_id
+    left join unit on
+      item.unit_id = unit.unit_id
     where
       item.category_id = '$category_id' and
       item.item_id = $item_id";

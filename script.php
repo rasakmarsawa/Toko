@@ -40,11 +40,22 @@
 <script src="assets/js/volt.js"></script>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> -->
+
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/datatables.min.css"/>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/datatables.min.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready( function () {
-  $('#myTable').DataTable();
+  $('#myTable').DataTable({
+    responsive: true
+  });
 } );
 </script>

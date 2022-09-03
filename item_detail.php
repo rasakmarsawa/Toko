@@ -21,7 +21,7 @@ require 'controller/pageController.php';
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h2 class="fs-5 fw-bold mb-0">Detail Item <?php echo $data['category_id']."-".$data['item_id'] ?></h2>
+                                    <h2 class="fs-5 fw-bold mb-0">Detail Item <?php echo $_GET['cat_id']."-".$_GET['id'] ?></h2>
                                 </div>
                                 <div class="col text-end">
                                   <a href="item_update.php?cat_id=<?php echo $_GET['cat_id'] ?>&&id=<?php echo $_GET['id'] ?>" class="btn btn-sm btn-secondary d-inline-flex align-items-center">
@@ -36,7 +36,17 @@ require 'controller/pageController.php';
                             </div>
                             <ul>
                                         <li>Nama Item : <?php echo $data['item_name'] ?></li>
-                                        <li>Kategori : <?php echo $data['category_name'] ?></li>
+                                        <li>Kategori : <?php echo $_GET['cat'] ?></li>
+                                        <li>Unit : <?php if ($data['unit_id']==NULL): ?>
+                                          <?php echo "-" ?>
+                                        <?php else: ?>
+                                          <?php echo $data['unit_name'] ?>
+                                        <?php endif; ?></li>
+                                        <li>Isi Dus : <?php if ($data['crate_content']==NULL): ?>
+                                          <?php echo "-" ?>
+                                        <?php else: ?>
+                                          <?php echo $data['crate_content'] ?>
+                                        <?php endif; ?></li>
                                         <li>Harga
                                             <ul>
                                                 <li><?php echo 'Rp. '.$data['item_price1'].',-' ?></li>
